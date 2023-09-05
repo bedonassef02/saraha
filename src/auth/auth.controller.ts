@@ -1,20 +1,33 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  UseInterceptors,
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { CreateAuthDto } from './dto/create-auth.dto';
 import { UpdateAuthDto } from './dto/update-auth.dto';
+import { SignUpUserDto } from '../users/dto/sign-up-user.dto';
+import { UserResponse } from '../users/dto/user.response';
+import { CookieTokenInterceptor } from './interceptors/cookie-token.interceptor';
+import { SignInUserDto } from '../users/dto/sign-in-user.dto';
 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post()
-  create(@Body() createAuthDto: CreateAuthDto) {
-    return this.authService.create(createAuthDto);
+  @Post('signup')
+  @UseInterceptors(CookieTokenInterceptor)
+  async signUp(@Body() signUpUserDto: SignUpUserDto): Promise<UserResponse> {
+    return await this.authService.signUp(signUpUserDto);
   }
 
-  @Get()
-  findAll() {
-    return this.authService.findAll();
+  @Post('signin')
+  @UseInterceptors(CookieTokenInterceptor)
+  async signIn(@Body() signInUserDto: SignInUserDto): Promise<UserResponse> {
+    return await this.authService.signIn(signInUserDto);
   }
 
   @Get(':id')
@@ -25,10 +38,5 @@ export class AuthController {
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateAuthDto: UpdateAuthDto) {
     return this.authService.update(+id, updateAuthDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.authService.remove(+id);
   }
 }
