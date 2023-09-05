@@ -1,6 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 import * as bcrypt from 'bcrypt';
+import { Expose } from 'class-transformer';
+import slugify from 'slugify';
 
 export type UserDocument = HydratedDocument<User>;
 
@@ -29,5 +31,6 @@ UserSchema.pre('save', async function (next) {
   if (this.isModified('password')) {
     this.password = await bcrypt.hash(this.password, 10);
   }
+  this.slug = slugify(this.slug, { lower: true, remove: /[*+~.()'"!:@]/g });
   next();
 });

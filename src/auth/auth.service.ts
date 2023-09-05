@@ -37,4 +37,8 @@ export class AuthService {
   private async generateToken(payload: Payload): Promise<string> {
     return await this.jwtService.signAsync(payload);
   }
+
+  async decodeToken(token: string): Promise<any> {
+    return this.jwtService.decode(token);
+  }
 }

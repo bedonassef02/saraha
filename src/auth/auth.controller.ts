@@ -14,7 +14,7 @@ import { UserResponse } from '../users/dto/user.response';
 import { CookieTokenInterceptor } from './interceptors/cookie-token.interceptor';
 import { SignInUserDto } from '../users/dto/sign-in-user.dto';
 
-@Controller('auth')
+@Controller({ version: '1', path: 'auth' })
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 

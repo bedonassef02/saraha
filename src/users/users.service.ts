@@ -36,6 +36,12 @@ export class UsersService {
     return `This action returns a #${id} user`;
   }
 
+  async findUserBySlug(slug: string): Promise<User | undefined> {
+    const user = await this.userModel.findOne({ slug });
+    console.log(user);
+    return user;
+  }
+
   async findByEmail(email: string): Promise<User> {
     return this.userModel.findOne({ email });
   }
