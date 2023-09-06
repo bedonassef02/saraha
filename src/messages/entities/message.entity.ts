@@ -22,7 +22,7 @@ export class Message {
 
 export const MessageSchema = SchemaFactory.createForClass(Message);
 
-MessageSchema.post('findOne', async function (result, next) {
+MessageSchema.post('findOne', async function (result, next: NextFunction) {
   if (result && !result.readAt) {
     result.readAt = new Date();
     await result.save();

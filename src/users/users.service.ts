@@ -7,6 +7,7 @@ import { Model } from 'mongoose';
 import { UserResponse } from './dto/user.response';
 import { plainIntoUserResponse } from '../common/helpers/plain-into-user.response';
 import * as bcrypt from 'bcrypt';
+import slugify from 'slugify';
 
 @Injectable()
 export class UsersService {
@@ -32,13 +33,14 @@ export class UsersService {
     return plainIntoUserResponse(user);
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(id: string): Promise<User> {
+    return this.userModel.findById(id);
   }
 
   async findUserBySlug(slug: string): Promise<User | undefined> {
-    const user = await this.userModel.findOne({ slug });
-    console.log(user);
+    const user = await this.userModel.findOne({
+      slug: slugify(slug, { lower: true, remove: /[*+~.()'"!:@]/g }),
+    });
     return user;
   }
 

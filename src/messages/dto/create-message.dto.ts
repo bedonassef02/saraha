@@ -14,7 +14,7 @@ export class CreateMessageDto {
   message: string;
   @IsOptional()
   @IsBoolean()
-  showUser: boolean = false;
+  showUser = false;
   @IsNotEmpty()
   @IsMongoId()
   toUser: string;

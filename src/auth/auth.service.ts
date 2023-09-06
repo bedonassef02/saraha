@@ -6,12 +6,14 @@ import { UserResponse } from '../users/dto/user.response';
 import { JwtService } from '@nestjs/jwt';
 import { Payload } from '../users/types/payload';
 import { SignInUserDto } from '../users/dto/sign-in-user.dto';
+import { EventEmitter2 } from '@nestjs/event-emitter';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly usersService: UsersService,
     private readonly jwtService: JwtService,
+    private eventEmitter: EventEmitter2,
   ) {}
 
   async signUp(signUpUserDto: SignUpUserDto): Promise<UserResponse> {

@@ -7,9 +7,6 @@ import {
   MaxLength,
 } from 'class-validator';
 import { GENDER } from '../constants/constants';
-import { Expose } from 'class-transformer';
-import slugify from 'slugify';
-
 export class SignUpUserDto {
   @IsNotEmpty()
   @IsString()
