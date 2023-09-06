@@ -7,10 +7,10 @@ import { PaginationFeature } from '../common/features/pagination.feature';
 import { PaginationResult } from '../common/types/pagination-result';
 import { paginationDetails } from '../common/helpers/pagination-details';
 import { FindAllMessagesResponse } from './types/find-all-messages.response';
-import { Pagination } from "../common/interfaces/pagination";
+import { Pagination } from '../common/interfaces/pagination';
 
 @Injectable()
-export class MessagesService implements Pagination{
+export class MessagesService implements Pagination {
   constructor(
     @InjectModel(Message.name) private readonly messageModel: Model<Message>,
   ) {}
@@ -36,7 +36,7 @@ export class MessagesService implements Pagination{
     return { pagination, messages };
   }
 
-   async pagination({ toUser, page, limit }): Promise<PaginationResult> {
+  async pagination({ toUser, page, limit }): Promise<PaginationResult> {
     const count: number = await this.messageModel.countDocuments({ toUser });
     const pagination: PaginationResult = paginationDetails({
       count,

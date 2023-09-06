@@ -1,6 +1,5 @@
 import { Controller, Get, Param, Delete, Req, Query } from '@nestjs/common';
 import { NotificationsService } from './notifications.service';
-import { Notification } from './entities/notification.entity';
 import { PaginationFeature } from '../common/features/pagination.feature';
 
 @Controller({ version: '1', path: 'notifications' })

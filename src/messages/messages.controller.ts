@@ -19,7 +19,7 @@ import { ReceiveMessageInterceptor } from './interceptors/receive-message.interc
 import { PaginationFeature } from '../common/features/pagination.feature';
 
 @Controller({ version: '1', path: 'messages' })
-export class MessagesController{
+export class MessagesController {
   constructor(private readonly messagesService: MessagesService) {}
 
   @Post(':id')
