@@ -12,4 +12,6 @@ export const configSchemaValidation = Joi.object({
   APP_SERVICE_NAME: Joi.string().required(),
   APP_EMAIL_ADDRESS: Joi.string().required(),
   APP_EMAIL_PASSWORD: Joi.string().required(),
+
+  COOKIE_TOKEN_MAX_AGE: Joi.number().required(),
 });

@@ -20,7 +20,6 @@ export class ShowUserInterceptor implements NestInterceptor {
     const request = context.switchToHttp().getRequest();
 
     const showSender = request.body?.showSender || false;
-
     const token = request.cookies['token'];
 
     let user;

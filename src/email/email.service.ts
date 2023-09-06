@@ -11,7 +11,7 @@ export class EmailService {
   ) {}
 
   @OnEvent('email.signIn')
-  async handleSignInEvent(email: string): Promise<void> {
+  async handleSignInEvent({ email }): Promise<void> {
     const subject = 'Login Alert';
     const text = `Someone has logged into your saraha account. If this was not you, please change your password immediately.`;
 

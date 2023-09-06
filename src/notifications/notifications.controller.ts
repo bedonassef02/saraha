@@ -1,21 +1,23 @@
-import { Controller, Get, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Param, Delete, Req, Query } from '@nestjs/common';
 import { NotificationsService } from './notifications.service';
+import { Notification } from './entities/notification.entity';
+import { PaginationFeature } from '../common/features/pagination.feature';
 
-@Controller('notifications')
+@Controller({ version: '1', path: 'notifications' })
 export class NotificationsController {
   constructor(private readonly notificationsService: NotificationsService) {}
 
   @Get()
-  findAll() {
-    return this.notificationsService.findAll();
+  async findAll(
+    @Req() request: any,
+    @Query() paginationFeature: PaginationFeature,
+  ): Promise<any> {
+    const { id } = request.user;
+    return this.notificationsService.findAll(id, paginationFeature);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.notificationsService.findOne(+id);
-  }
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.notificationsService.remove(+id);
+  async remove(@Req() request: any, @Param('id') id: string): Promise<void> {
+    await this.notificationsService.remove(id);
   }
 }

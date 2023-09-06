@@ -1,9 +1,4 @@
-import {
-  ArgumentMetadata,
-  ConflictException,
-  Injectable,
-  PipeTransform,
-} from '@nestjs/common';
+import { ConflictException, Injectable, PipeTransform } from '@nestjs/common';
 import { UsersService } from '../../users/users.service';
 
 @Injectable()

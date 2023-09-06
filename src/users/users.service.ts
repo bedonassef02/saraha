@@ -8,6 +8,7 @@ import { UserResponse } from './dto/user.response';
 import { plainIntoUserResponse } from '../common/helpers/plain-into-user.response';
 import * as bcrypt from 'bcrypt';
 import slugify from 'slugify';
+import { UpdatePasswordDto } from '../profile/dto/update-password.dto';
 
 @Injectable()
 export class UsersService {
@@ -21,9 +22,7 @@ export class UsersService {
   }
 
   async verify(signInUserDto: SignInUserDto): Promise<UserResponse> {
-    const user: User = await this.userModel.findOne({
-      email: signInUserDto.email,
-    });
+    const user: User = await this.findByEmail(signInUserDto.email);
     const isSamePassword: boolean = user
       ? await this.comparePassword(signInUserDto.password, user.password)
       : false;
@@ -48,8 +47,22 @@ export class UsersService {
     return this.userModel.findOne({ email });
   }
 
-  update(id: number, updateUserDto: SignInUserDto) {
-    return `This action updates a #${id} user`;
+  async changePassword(
+    id: string,
+    updatePasswordDto: UpdatePasswordDto,
+  ): Promise<void> {
+    const user: any = await this.findOne(id);
+    const isSamePassword: boolean = user
+      ? await this.comparePassword(
+          updatePasswordDto.currentPassword,
+          user.password,
+        )
+      : false;
+    if (!isSamePassword) {
+      throw new BadRequestException(`email or password mismatch our records`);
+    }
+    user.password = updatePasswordDto.newPassword;
+    await user.save();
   }
 
   private async comparePassword(

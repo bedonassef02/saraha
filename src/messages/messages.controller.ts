@@ -7,6 +7,7 @@ import {
   Delete,
   UseInterceptors,
   Req,
+  Query,
 } from '@nestjs/common';
 import { MessagesService } from './messages.service';
 import { CreateMessageDto } from './dto/create-message.dto';
@@ -14,11 +15,11 @@ import { Message } from './entities/message.entity';
 import { ReplaceSlugWithUserIdInterceptor } from './interceptors/replace-slug-with-user-id.interceptor';
 import { ShowUserInterceptor } from './interceptors/show-user.interceptor';
 import { ParseMongoIdPipe } from '../common/pipes/parse-mongo-id.pipe';
-import { ReceiveMessageInterceptor } from "./interceptors/receive-message.interceptor";
-
+import { ReceiveMessageInterceptor } from './interceptors/receive-message.interceptor';
+import { PaginationFeature } from '../common/features/pagination.feature';
 
 @Controller({ version: '1', path: 'messages' })
-export class MessagesController {
+export class MessagesController{
   constructor(private readonly messagesService: MessagesService) {}
 
   @Post(':id')
@@ -35,9 +36,12 @@ export class MessagesController {
   }
 
   @Get()
-  async findAll(@Req() request: any): Promise<Message[]> {
+  async findAll(
+    @Req() request: any,
+    @Query() paginationFeature: PaginationFeature,
+  ): Promise<any> {
     const { id } = request.user;
-    return this.messagesService.findAll(id);
+    return this.messagesService.findAll(id, paginationFeature);
   }
 
   @Get(':id')

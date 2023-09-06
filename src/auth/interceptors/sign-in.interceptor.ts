@@ -20,7 +20,7 @@ export class SignInInterceptor implements NestInterceptor {
         if (response.statusCode === HttpStatus.OK) {
           const request = ctx.getRequest();
           const { email } = request.body;
-          this.eventEmitter.emit('email.signIn', email);
+          this.eventEmitter.emit('email.signIn', { email });
         }
       }),
     );
