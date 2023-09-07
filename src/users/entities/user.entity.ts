@@ -21,6 +21,8 @@ export class User {
 
   @Prop({ unique: true, required: true })
   slug: string;
+  @Prop({ default: 'default.jpg' })
+  image: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

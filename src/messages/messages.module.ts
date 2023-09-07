@@ -19,7 +19,7 @@ import { MulterModule } from '@nestjs/platform-express';
     MongooseModule.forFeature([{ name: Message.name, schema: MessageSchema }]),
     MulterModule.register({
       storage: diskStorage({
-        destination: './uploads',
+        destination: './uploads/messages',
         filename: (req, file, cb) => {
           cb(null, Date.now() + file.originalname);
         },

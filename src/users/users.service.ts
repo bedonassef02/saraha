@@ -71,4 +71,12 @@ export class UsersService {
   ): Promise<boolean> {
     return await bcrypt.compare(candidatePassword, hashedPassword);
   }
+
+  async changeProfileImage(id: string, image: string): Promise<void> {
+    await this.userModel.findByIdAndUpdate(id, { image }, { new: true });
+  }
+
+  async changeUsername(id: string, username: string): Promise<void> {
+    await this.userModel.findByIdAndUpdate(id, { username }, { new: true });
+  }
 }
