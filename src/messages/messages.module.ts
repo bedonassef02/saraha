@@ -11,10 +11,20 @@ import { Message, MessageSchema } from './entities/message.entity';
 import { UsersModule } from '../users/users.module';
 import { AuthModule } from '../auth/auth.module';
 import { AuthMiddleware } from '../auth/middlewares/auth.middleware';
+import { diskStorage } from 'multer';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: Message.name, schema: MessageSchema }]),
+    MulterModule.register({
+      storage: diskStorage({
+        destination: './uploads',
+        filename: (req, file, cb) => {
+          cb(null, Date.now() + file.originalname);
+        },
+      }),
+    }),
     UsersModule,
     AuthModule,
   ],

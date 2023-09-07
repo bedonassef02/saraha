@@ -17,6 +17,8 @@ import { ShowUserInterceptor } from './interceptors/show-user.interceptor';
 import { ParseMongoIdPipe } from '../common/pipes/parse-mongo-id.pipe';
 import { ReceiveMessageInterceptor } from './interceptors/receive-message.interceptor';
 import { PaginationFeature } from '../common/features/pagination.feature';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { UploadImageInterceptor } from './interceptors/upload-image.interceptor';
 
 @Controller({ version: '1', path: 'messages' })
 export class MessagesController {
@@ -26,6 +28,8 @@ export class MessagesController {
   @UseInterceptors(
     ReplaceSlugWithUserIdInterceptor,
     ShowUserInterceptor,
+    FileInterceptor('file'),
+    UploadImageInterceptor,
     ReceiveMessageInterceptor,
   )
   create(

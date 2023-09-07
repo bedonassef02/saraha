@@ -16,7 +16,6 @@ export class MessagesService implements Pagination {
   ) {}
 
   async create(createMessageDto: CreateMessageDto): Promise<Message> {
-    console.log(createMessageDto);
     return this.messageModel.create(createMessageDto);
   }
 
