@@ -2,8 +2,13 @@
 /dist
 /node_modules
 
+# ENV
 .env
+
+# Uploads
 ./uploads
+
+
 
 # Logs
 logs
