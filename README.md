@@ -1,73 +1,41 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# 
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+<h1 align="center" id="title">Saraha-Api</h1>
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+<p align="center"><img src="https://sarahah.top/img/main.jpg" alt="project-image" width="700"></p>
 
-## Description
+<h2>Introduction:</h2>
+<p id="description"> The Saraha API project is a backend application developed using Nest.js, designed to serve as the server-side component of the Saraha messaging platform. Saraha is an anonymous messaging platform where users can send and receive messages without revealing their identities</p>
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
+<h2>🧐 Features</h2>
 
-```bash
-$ npm install
-```
+Some key features of the Saraha API project might includes:
 
-## Running the app
+* User Registration and Authentication: The API provides endpoints for user registration, account creation, and authentication. Users can create an account with a unique username and password, and subsequently authenticate themselves to access protected resources
 
-```bash
-# development
-$ npm run start
+*  Profile Management: Users can manage their profile settings, including updating their username, email address, profile picture, and other optional information. The API provides endpoints for handling these profile management operations.
 
-# watch mode
-$ npm run start:dev
+*    Message Creation and Retrieval: Authenticated users can send anonymous messages to other users on the platform. The API endpoints handle the storage and retrieval of messages, ensuring that messages are delivered anonymously without revealing the sender's identity.
 
-# production mode
-$ npm run start:prod
-```
+*    Scalability and Performance: The Saraha API is designed with scalability and performance in mind. It utilizes techniques such as caching, efficient database queries, and asynchronous processing to handle a large number of concurrent requests and deliver optimal performance
 
-## Test
+*   Error Handling and Validation: The API project implements robust error handling and validation mechanisms to ensure that incoming requests are properly validated and errors are handled gracefully. This includes validating user input, handling authentication errors, and providing meaningful error messages in case of failures.
 
-```bash
-# unit tests
-$ npm run test
+<h2> Documentation</h2>
+[Postman doucments link](https://documenter.getpostman.com/view/23775737/2s9YBz2akU)
 
-# e2e tests
-$ npm run test:e2e
 
-# test coverage
-$ npm run test:cov
-```
+<h2>💻 Built with</h2>
 
-## Support
+Technologies and tools used in the project:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+*   Nest.js
+*   MongoDB
+*   mongoose
+*   jsonwebtoken
+*   joi
+*   bcrypt.js
+*   config
+*   nodemailer
+*   multer
